@@ -38,6 +38,10 @@ model_2.summary()
 - [Δ] 코드가 간결한가요?
   > 비슷한 연산에 대해서 함수화도 가능했을 수도 있다.
 ```python
+  train_data.drop_duplicates(subset=['document'], inplace=True)
+  train_data = train_data.dropna(how = 'any')
+  test_data.drop_duplicates(subset=['document'], inplace=True)
+  test_data = test_data.dropna(how = 'any')
   X_train = []
   for sentence in train_data['document']:
     temp_X = tokenizer.morphs(sentence) # 토큰화
