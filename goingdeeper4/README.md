@@ -8,14 +8,33 @@
 
 - [X] 코드가 정상적으로 동작하고 주어진 문제를 해결했나요?
   
-- [ ] 주석을 보고 작성자의 코드가 이해되었나요?
-  > 위 항목에 대한 근거 작성 필수
-- [ ] 코드가 에러를 유발할 가능성이 없나요?
-  >위 항목에 대한 근거 작성 필수
-- [ ] 코드 작성자가 코드를 제대로 이해하고 작성했나요?
-  > 위 항목에 대한 근거 작성 필수
-- [ ] 코드가 간결한가요?
-  > 위 항목에 대한 근거 작성 필수
+- [X] 주석을 보고 작성자의 코드가 이해되었나요?
+  > 아래와 같이 주석을 자세히 작성해주셔서 쉽게 이해할 수 있었습니다.
+  ```
+  #크기 조정 및 정규화
+  input_image, ratio = prepare_image(image)
+  #사전에 정의한 추론 모델을 사용하여 입력 이미지로부터 검출 정보를 예측
+  detections = inference_model.predict(input_image)
+  #예측된 검출의 유효한 개수를 가져온다
+  num_detections = detections.valid_detections[0]
+  #예측된 검출의 클래스 인덱스를 클래스 이름으로 변환하여 리스트로 가져온다.
+  class_names = [
+    int2str(int(x)) for x in detections.nmsed_classes[0][:num_detections]
+  ]
+  #이미지와 검출 정보를 시각화하고 클래스별 높이와 너비 정보를 반환
+  returned_ax, height_v, width_v, class_name = visualize_detections(
+    image,
+    detections.nmsed_boxes[0][:num_detections] / ratio,
+    class_names,
+    detections.nmsed_scores[0][:num_detections],
+  )
+  ```
+- [X] 코드가 에러를 유발할 가능성이 없나요?
+  > 결과가 바로바로 나와 에러가 없는 것을 볼 수 있습니다.
+- [X] 코드 작성자가 코드를 제대로 이해하고 작성했나요?
+  > 네 주석을 작성하신 걸 보면 잘이해하신것 같습니다.
+- [X] 코드가 간결한가요?
+  > 네 실행 결과가 바로 나와 간결하게 정리되어 있습니다.
 
 # 예시
 1. 코드의 작동 방식을 주석으로 기록합니다.
