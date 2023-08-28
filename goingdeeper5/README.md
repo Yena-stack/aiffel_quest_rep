@@ -8,14 +8,25 @@
 
 - [X] 코드가 정상적으로 동작하고 주어진 문제를 해결했나요?
   
-- [ ] 주석을 보고 작성자의 코드가 이해되었나요?
-  > 위 항목에 대한 근거 작성 필수
-- [ ] 코드가 에러를 유발할 가능성이 없나요?
-  >위 항목에 대한 근거 작성 필수
-- [ ] 코드 작성자가 코드를 제대로 이해하고 작성했나요?
-  > 위 항목에 대한 근거 작성 필수
-- [ ] 코드가 간결한가요?
-  > 위 항목에 대한 근거 작성 필수
+- [X] 주석을 보고 작성자의 코드가 이해되었나요?
+  > 네 자세히 잘 적어주셔서 쉽게 이해했습니다.
+  ```python
+  def load_dataset(self):
+    # kitti dataset에서 필요한 정보(이미지 경로 및 라벨)를 directory에서 확인하고 로드하는 함수입니다.
+    # 이때 is_train에 따라 test set을 분리해서 load하도록 해야합니다.
+    input_images = glob(os.path.join(self.dir_path, "image_2", "*.png"))
+    label_images = glob(os.path.join(self.dir_path, "semantic", "*.png"))
+    input_images.sort()
+    label_images.sort()
+    assert len(input_images) == len(label_images)
+    data = [ _ for _ in zip(input_images, label_images)]
+  ```
+- [X] 코드가 에러를 유발할 가능성이 없나요?
+  >네 결과가 바로바로 나와 잘작동하는 것을 볼 수 있습니다.
+- [X] 코드 작성자가 코드를 제대로 이해하고 작성했나요?
+  > 네
+- [X] 코드가 간결한가요?
+  > 네 기능별로 나눠 바로바로 결과가 나와 아주 간결합니다.
 
 # 예시
 1. 코드의 작동 방식을 주석으로 기록합니다.
